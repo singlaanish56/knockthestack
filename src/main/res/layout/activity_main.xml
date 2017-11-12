@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.knockthestack.MainActivity">
+
+
+    <ImageView
+        android:id="@+id/goldimage"
+        android:layout_width="91dp"
+        android:layout_height="76dp"
+        android:layout_marginBottom="44dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.288"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/firsttextview"
+        app:layout_constraintVertical_bias="0.473"
+        app:srcCompat="@drawable/gold" />
+
+
+    <TextView
+        android:id="@+id/firsttextview"
+        android:layout_width="91dp"
+        android:layout_height="76dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="First Floor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.288"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/secondtextview"
+        app:layout_constraintVertical_bias="0.114" />
+
+    <TextView
+        android:id="@+id/toptextview"
+        android:layout_width="91dp"
+        android:layout_height="76dp"
+        android:text="Top Floor"
+        android:layout_marginLeft="88dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintVertical_bias="0.198"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/diceimage"
+        android:layout_width="76dp"
+        android:layout_height="72dp"
+        app:srcCompat="@drawable/dice1"
+        android:layout_marginRight="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintVertical_bias="0.342"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.901" />
+
+    <TextView
+        android:id="@+id/displaytextview"
+        android:layout_width="347dp"
+        android:layout_height="50dp"
+        android:text="display"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintVertical_bias="0.017" />
+
+    <Button
+        android:id="@+id/rollbutton"
+        android:layout_width="102dp"
+        android:layout_height="49dp"
+        android:text="Roll"
+        android:layout_marginRight="16dp"
+
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintVertical_bias="0.131"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.891"
+        app:layout_constraintTop_toBottomOf="@+id/diceimage" />
+
+    <Button
+        android:id="@+id/challengebutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Challenge"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="44dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintVertical_bias="0.102"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintTop_toBottomOf="@+id/rollbutton" />
+
+    <TextView
+        android:id="@+id/secondtextview"
+        android:layout_width="91dp"
+        android:layout_height="76dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="88dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Second Floor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toptextview"
+        app:layout_constraintVertical_bias="0.043" />
+
+
+    <TextView
+        android:id="@+id/goldtextview"
+        android:layout_width="83dp"
+        android:layout_height="36dp"
+        android:text="Gold Value :0"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="54dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/challengebutton"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintLeft_toRightOf="@+id/goldimage"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintHorizontal_bias="0.245" />
+
+</android.support.constraint.ConstraintLayout>

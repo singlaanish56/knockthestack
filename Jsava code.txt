@@ -1,0 +1,252 @@
+package com.example.anirij.knockthestack;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.util.Random;
+import java.util.Stack;
+
+public class MainActivity extends AppCompatActivity {
+    TextView displaytextview;
+    TextView toptextview;
+    TextView secondtextview;
+    TextView firsttextview;
+    TextView goldtextview;
+    ImageView topfloor;
+    ImageView secondfloor;
+    ImageView firstfloor;
+    ImageView diceimage;
+    int toptextvalue;
+    int secondtextvalue;
+    int firsttextvalue;
+    int turndicescore;
+    int topmaxvalue;
+    int secondmaxvalue;
+    int firstmaxvalue;
+    int goldvalue;
+    int goldchallengevalue;
+    int userturnscore;
+    int computerdicescore;
+    String whoseturn;
+    Button rollButton;
+    Button challengeButton;
+    Random random = new Random();
+    int [] dicevalues = {R.drawable.dice1,R.drawable.dice2,R.drawable.dice3,R.drawable.dice4,R.drawable.dice5,R.drawable.dice6};
+    Stack gold = new Stack();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        TextView displaytextview = (TextView) findViewById(R.id.displaytextview);
+        TextView toptextview = (TextView) findViewById(R.id.toptextview);
+        TextView secondtextview = (TextView) findViewById(R.id.secondtextview);
+        TextView firsttextview = (TextView) findViewById(R.id.firsttextview);
+        TextView goldtextview = (TextView) findViewById(R.id.goldtextview);
+        ImageView topfloor = (ImageView) findViewById(R.id.topfloor);
+        ImageView secondfloor = (ImageView) findViewById(R.id.secondfloor);
+        ImageView firstfloor = (ImageView) findViewById(R.id.firstfloor);
+        ImageView diceimage = (ImageView) findViewById(R.id.diceimage);
+        Button rollButton = (Button) findViewById(R.id.rollbutton);
+        Button challengeButton = (Button) findViewById(R.id.challengebutton);
+
+
+    }
+    //to intialize the floor values as per the levels
+    public void startgame(String level){
+
+        if(level.equalsIgnoreCase("Easy"))//easy level
+        goldtextview.setText("100");
+        goldvalue =100;
+        goldchallengevalue=10;
+        for(int i=1;i<=30;i++){
+            gold.push(i);
+        }
+
+        {
+            displaytextview.setText(" WElCOME PLAYER !!");
+
+            toptextview.setText("100");
+            toptextvalue=100;
+
+
+            secondtextview.setText((int)gold.peek());
+            secondtextvalue=(int)gold.peek();
+
+
+           // firsttextview.setText("25");
+           // firsttextvalue=25;
+
+
+        }
+
+        if(level.equalsIgnoreCase("Medium"))//mediom level
+             goldtextview.setText("70");
+        goldvalue= 70;
+        goldchallengevalue=10;
+        for(int i=1;i<=50;i++){
+            gold.push(i);
+        }
+        {
+            displaytextview.setText(" WElCOME PLAYER !!");
+
+            toptextview.setText("100");
+            toptextvalue=100;
+
+            secondtextview.setText((int)gold.peek());
+            secondtextvalue=(int)gold.peek();
+
+            //firsttextview.setText("25");
+           // firsttextvalue=25;
+
+
+        }
+        if(level.equalsIgnoreCase("Hard"))//hard level
+            goldtextview.setText("50");
+        goldvalue=50;
+        goldchallengevalue=10;
+        for(int i=1;i<=80;i++){
+            gold.push(i);
+        }
+        {
+            displaytextview.setText(" WElCOME PLAYER !!");
+
+            toptextview.setText("100");
+            toptextvalue=100;
+
+            secondtextview.setText((int)gold.peek());
+            secondtextvalue=(int)gold.peek();
+
+           // firsttextview.setText("30");
+            //firsttextvalue=30;
+
+
+        }
+
+        // stack();
+    }
+
+    //main method where the game runs
+    private void stack(){
+        int i;
+       // topmaxvalue=toptextvalue;
+        // secondmaxvalue=secondtextvalue; //firstmaxvalue=firsttextvalue;//store the max value a floor can store
+        if(whoseturn.equalsIgnoreCase("computer")){ //for computer's turn
+                while((int)gold.peek()!=100){
+                    pushstack(gold);
+                    turndicescore--;
+                   secondtextview.setText((int)(gold.peek()));
+
+                   }
+
+                //implement the winning dialog
+
+                }
+        if(whoseturn.equalsIgnoreCase("user")) { //for user's turn
+          while((int)gold.peek()!=0){
+              popstack(gold);
+              turndicescore--;
+              secondtextview.setText((int)(gold.peek()));
+          }
+         //implement the winning dialog
+    }
+
+     }
+     //after clicking thr roll button
+     public void roll(){
+         int dicenum = 1+random.nextInt(6);
+         diceimage.setImageDrawable(getDrawable(dicenum-1));
+         turndicescore=dicenum;
+          //userturn();
+     }
+     //when the user only clicks roll
+     public void onlyuserroll(){
+         int dicenum = 1+random.nextInt(6);
+         diceimage.setImageDrawable(getDrawable(dicenum-1));
+         turndicescore=dicenum;
+         whoseturn="user";
+         stack();
+         computerturn();
+
+
+     }
+     //after clicking challenge button
+    public void challenge(){
+        displaytextview.setText("You Challenged, Roll the Dice");
+        goldvalue -=goldchallengevalue;
+        //userturn();
+        roll();
+       userturnscore= turndicescore;
+        displaytextview.setText("Computer's Turn");
+        buttonoff();
+        roll();
+        computerdicescore=turndicescore;
+        if (userturnscore>computerdicescore){
+            userturnscore *=userturnscore;
+            goldvalue +=userturnscore;
+            turndicescore=userturnscore;
+            whoseturn ="user";
+            stack();
+        }
+        if (userturnscore<computerdicescore){
+            computerdicescore *=computerdicescore;
+            turndicescore=computerdicescore;
+            whoseturn="computer";
+            stack();
+        }
+        if(userturnscore==computerdicescore){
+            goldvalue +=goldchallengevalue;
+            buttonon();
+
+        }
+
+
+
+
+
+    }
+    //public void userturn(){
+        //displaytextview.setText("Your Turn");
+       // rollButton.setEnabled(true);
+       // challengeButton.setEnabled(true);
+       // whoseturn="user";
+        //stack();
+
+    //}
+    public void computerturn(){
+       buttonoff();
+        displaytextview.setText("Computer's Turn");
+        whoseturn="computer";
+        int dicenum = 1+random.nextInt(6);
+        diceimage.setImageDrawable(getDrawable(dicenum-1));
+        turndicescore=dicenum;
+        stack();
+        displaytextview.setText("Your Turn");
+        buttonon();
+    }
+
+    public void buttonon(){
+        rollButton.setEnabled(true);
+        challengeButton.setEnabled(true);
+    }
+    public void buttonoff(){
+        rollButton.setEnabled(false);
+        challengeButton.setEnabled(false);
+    }
+
+
+
+    public void pushstack(Stack gold) {
+        int a =  (Integer)gold.peek();
+        gold.push(a+1);
+
+    }
+    public void popstack (Stack gold) {
+        gold.pop();
+    }
+
+}
+
